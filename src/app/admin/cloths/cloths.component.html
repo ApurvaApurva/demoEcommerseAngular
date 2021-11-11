@@ -1,0 +1,28 @@
+<h1>Cloths</h1>
+<a class="btn btn-primary mb-3" (click)="addCloths()">add Cloths</a>
+<div class="container row">
+  <div class="col-md-6">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Product Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cloths of cloths">
+          <td>{{cloths.id}}</td>
+          <td>{{cloths.name}}</td>
+          <td>
+            <button type="button" class="btn btn-primary" (click)="viewCloths(cloths.id)">Show Details</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-6">
+    <app-addcloths *ngIf="action === 'edit' || action === 'add'" [cloths]="selectedCloths" (clothsAddedEvent)="refreshData()"></app-addcloths>
+    <app-viewcloths *ngIf="action === 'view'" [cloths]="selectedCloths"></app-viewcloths>
+  </div>
+</div>

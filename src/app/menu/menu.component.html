@@ -1,0 +1,50 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark" >
+        <div><a routerLink="/shop/books" class="navbar-brand" [routerLink]="root">General Store</a></div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav" >
+            <li *ngIf="!currentUser || currentUser.role == Role.User"><a  class="nav-link" routerLink="/shop/books"  >Books</a></li>
+            <li *ngIf="!currentUser || currentUser.role == Role.User"><a  class="nav-link" routerLink="/shop/cloths"  >Cloths</a></li>
+            <li class="nav-item dropdown" >
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"  >
+                    Admin
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a routerLink="/admin/users" class="dropdown-item">Users</a>
+                    <a routerLink="/admin/books" class="dropdown-item">Books</a>
+                    <a routerLink="/admin/cloths" class="dropdown-item">Cloths</a>
+                </div>
+            </li>
+        </ul>
+        <div class="navbar-nav ml-auto">
+            <a 
+                    class="nav-item nav-link " routerLink="/order">
+                    Orders
+            </a>
+<!--*ngIf="loginService.isUserLoggedIn()"-->
+            <ng-container *ngIf="currentUser">
+                <a class="nav-item nav-link " routerLink="/order">
+                    <i class="fas fa-list-ul"></i>                    
+                </a>
+                <a class="nav-item nav-link " routerLink="/logout" [queryParams]="{logout: true}"  >
+                    Sign Out
+                </a>
+            </ng-container>
+            <ng-container >
+                <a class="nav-item nav-link " routerLink="/login">
+                    Sign In
+                </a>
+                <a class="nav-item nav-link " (click)="signup()" routerLink="/register">
+                    Sign Up
+                </a>
+            </ng-container>
+        </div>
+        </div>
+    </nav>
+</header>

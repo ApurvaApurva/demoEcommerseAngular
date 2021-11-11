@@ -1,0 +1,21 @@
+<h1>Product Details</h1>
+
+    <table>
+        <tr>
+            <td>Product Id</td>
+            <td>{{cloths.id}}</td>
+        </tr>
+        <tr>
+            <td>Product Name</td>
+            <td>{{cloths.name}}</td>
+        </tr>
+        
+        <tr>
+            <td>Product Price</td>
+            <td>{{cloths.price}}</td>
+        </tr>
+    </table>
+    <br>
+    
+    <a class="btn btn-small btn-warning" (click)="editCloths()">edit</a>&nbsp;  
+    <a class="btn btn-small btn-danger" (click)="deleteCloths()">delete</a>
